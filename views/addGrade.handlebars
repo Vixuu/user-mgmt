@@ -1,0 +1,45 @@
+
+{{#if alert}}
+<div style="max-width: 800px; margin:auto" class="alert alert-success mb-4 {{#if danger}}alert-danger{{/if}} alert-dismissible fade show" role="alert">
+  {{alert}}
+  <a class="btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
+</div>
+{{/if}}
+
+<h2 class="pt-4 text-center">Add Grade</h2>
+<form style="max-width: 1000px; margin:auto" action="/grade/add/" method="POST">
+  <label class="form-label" for="user">User</label>
+  <select class="form-select form-select-lg mb-3" aria-label="Default select example" name="user" >
+    {{#each user}}
+    <option value="{{this.id}}">{{this.first_name}} {{this.last_name}}</option>
+    {{/each}}
+  </select>
+  <label class="form-label" for="lecturer">Select lecturer</label>
+  <select class="form-select form-select-lg mb-3" aria-label="Default select example" name="lecturer">
+    <option selected disabled>Select</option>
+
+    {{#each lecturers}}
+    <option value="{{this.id}}">{{this.first_name}} {{last_name}}</option>
+    {{/each}}
+  </select>
+  <label class="form-label" for="subject">Select subject</label>
+  <select class="form-select form-select-lg mb-3" aria-label="Default select example" name="subject">
+    <option selected disabled>Select</option>
+    {{#each subjects}}
+    <option value="{{this.id}}">{{this.subject}}</option>
+    {{/each}}
+  </select>
+  <label class="form-label" for="grade">Select grade</label>
+  <select class="form-select form-select-lg mb-3" aria-label="Default select example" name="grade">
+    <option selected disabled>Select</option>
+    <option value="6">6</option>
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="1">2</option>
+    <option value="1">1</option>
+  </select>
+  <div class="d-grid gap-2 pt-3">
+  <button class="btn btn-primary" type="submit">Submit</button>
+</div>
+</form>

@@ -1,0 +1,42 @@
+
+{{#if alert}}
+<div style="max-width: 800px; margin:auto" class="alert alert-success mb-4 {{#if danger}}alert-danger{{/if}} alert-dismissible fade show" role="alert">
+  {{alert}}
+  <a class="btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
+</div>
+{{/if}}
+
+<div class="row pb-4 mt-3">
+  <div class="col-6"><h1>Users</h1></div>
+  <div class="col-6 d-flex justify-content-end">
+    <a href="/user/add" type="button" class="btn btn-success align-self-center">Add user</a>
+  </div>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col" class="text-end">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each users}}
+    <tr>
+      <th scope="row">{{this.id}}</th>
+      <td>{{this.first_name}}</td>
+      <td>{{this.last_name}}</td>
+      <td>{{this.email}}</td>
+      <td class="text-end">
+        <a href="/grade/add/{{this.id}}" type="button" class="btn btn-outline-success btn-light btn-small ">Add grade</a>
+        <a href="/user/view/{{this.id}}" type="button" class="btn btn-primary btn-small ">View</a>
+        <a href="/" type="button" class="btn btn-secondary btn-small">Edit</a>
+        <a href="/user/delete/{{this.id}}" type="button" class="btn btn-danger btn-small">Delete</a>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

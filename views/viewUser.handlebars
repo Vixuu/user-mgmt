@@ -1,0 +1,66 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">User grades</li>
+  </ol>
+</nav>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col" class="text-end">Comments</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each user}}
+      <tr>
+        <th scope="row">{{this.id}}</th>
+        <td>{{this.first_name}}</td>
+        <td>{{this.last_name}}</td>
+        <td>{{this.email}}</td>
+        <td class="text-end">
+          {{#unless this.comments}}
+          No comments
+          {{/unless}}
+          {{this.comments}}
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <table style="max-width: 1000px; margin: 100px auto " class="table caption-top">
+  {{#unless result}}
+  <caption>No grades to show</caption>
+  {{/unless}}
+
+  {{#if result}}
+  <caption>Grades</caption>
+  <thead>
+    <tr>
+      <th scope="col">Lecturer</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Grade</th>
+      <th scope="col" class="text-end">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each result}}
+    <tr>
+      <td>{{this.first_name}} {{this.last_name}}</td>
+      <td>{{this.subject}}</td>
+      <th>{{grade}}</th>
+      <td class="text-end">
+        <a href="/grade/delete/{{this.id_grade}}?usrid={{user}}" type="button" class="btn btn-danger btn-small">Delete</a>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+  {{/if}}
+  </table>
+</div>

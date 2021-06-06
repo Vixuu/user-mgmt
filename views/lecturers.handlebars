@@ -1,0 +1,37 @@
+
+<div class="row pb-4">
+  <div class="col-6"><h1>Lecturers</h1></div>
+  <div class="col-6 d-flex justify-content-end">
+    <a href="/lecturer/add" type="button" class="btn btn-success align-self-center">Add lecturer</a>
+  </div>
+</div>
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Specialization</th>
+      <th scope="col" class="text-end">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each lecturers}}
+    <tr>
+      <th scope="row">{{this.id}}</th>
+      <td>{{this.first_name}}</td>
+      <td>{{this.last_name}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.spec}}</td>
+      <td class="text-end">
+        <a href="#" type="buttom" class="btn btn-primary btn-small ">View</a>
+        <a href="/edit-user" type="buttom" class="btn btn-secondary btn-small">Edit</a>
+        <a href="/lecturer/delete/{{this.id}}" type="buttom" class="btn btn-danger btn-small">Delete</a>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
