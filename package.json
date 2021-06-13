@@ -1,7 +1,7 @@
 {
   "name": "-",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple user management system currently still in dev",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,11 +13,20 @@
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "express-handlebars": "^5.3.0",
+    "express-handlebars": "^5.3.2",
     "handlebars": "^4.7.7",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "mysqli": "^3.0.11"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vixuu/user-mgmt.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Vixuu/user-mgmt/issues"
+  },
+  "homepage": "https://github.com/Vixuu/user-mgmt#readme"
 }

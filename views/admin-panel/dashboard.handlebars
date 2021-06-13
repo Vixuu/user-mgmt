@@ -1,4 +1,10 @@
-<a href="/dashboard/add/post" type="button" class="btn btn-outline-success btn-small mt-3">Add Post</a>
+<div class="d-flex justify-content-between mt-3">
+  <a href="/dashboard/add/post" type="button" class="btn btn-outline-success btn-small">Add Post</a>
+  <form class="d-flex" method="POST" action="/dashboard">
+    <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search" name="search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+</div>
 
 <table class="table table-bordered mt-4">
   <thead>
@@ -14,20 +20,17 @@
   <tbody>
     {{#each result}}
     <tr>
-      <td {{#if this.idStatus}} style="color: green;" {{else}} style="color: red;"{{/if}}>{{this.status}}</td>
+      <td {{#if this.idStatus}} style="color: green; width: 8%;" {{else}} style="color: red; width: 8%;"{{/if}} >{{this.status}}</td>
       <td>{{this.author}}</td>
       <td>{{this.Title}}</td>
       <td style="width: 50%;">{{this.Content}}</td>
       <td>{{this.category}}</td>
       <td class="text-end">
-        <a href="" type="button" 
-        class="btn {{#if this.idStatus}}btn-secondary{{else}}btn-success{{/if}} btn-small">
-          {{#if this.idStatus}}
-            To DRAFT
-          {{else}}
-            PUBLISH
-          {{/if}}
-        </a>
+        {{#if this.idStatus}}
+          <a href="/dashboard/update/status/{{this.idNews}}" type="button" class="btn btn-secondary btn-small">DRAFT</a>
+        {{else}}
+          <a href="/dashboard/update/status/{{this.idNews}}" type="button" class="btn btn-success btn-small">PUBLISH</a>
+        {{/if}}
         <a href="" type="button" class="btn btn-primary btn-small">Edit</a>
         <a href="" type="button" class="btn btn-danger btn-small">Delete</a>
       </td>

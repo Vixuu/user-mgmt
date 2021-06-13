@@ -53,9 +53,13 @@ router.get('/grade/delete/:id', grade.deleteGrade)
 //Admin Dashboard 
 router.get('/dashboard', dashboard.viewDash)
 
+router.post('/dashboard', dashboard.search)
+
 router.get('/dashboard/add/post', dashboard.addPostForm)
 
 router.post('/dashboard/add/post', dashboard.addPost)
+
+router.get('/dashboard/update/status/:id', dashboard.updateStatus)
 
 
 module.exports = router

@@ -10,7 +10,7 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
   if (err) {
-    throw (err)
+    
   }
   console.log('DB connected')
 })
@@ -22,12 +22,20 @@ exports.viewDash = (req, res) => {
   }) 
 }
 
+exports.search = (req, res) => {
+  const {search} = req.body
+  db.query(`SELECT * FROM news, authors, status, category WHERE (content OR title LIKE '${search}') AND (news.idAuthor = authors.id AND news.idStatus = status.id AND news.idCategory = category.id) `, (err, result) => {
+    res.render('./admin-panel/dashboard', {result})
+  })
+}
+
 exports.addPostForm = (req, res) => {
   db.query('SELECT * from status', (err, status) => {
     if (err) return
     db.query('SELECT * from authors', (err, authors) => {
       if (err) return
       db.query('SELECT * from category', (err, category) => {
+        let danger = false
         if (err) return
         const { alert } = req.query
         if (alert) {
@@ -52,3 +60,12 @@ exports.addPost = (req, res) => {
     res.redirect('/dashboard/add/post')
   })
 }
+
+exports.updateStatus = (req, res) => {
+  db.query('UPDATE news SET idStatus = !idStatus WHERE idNews = ?', [req.params.id], (err) => {
+    if(err) return
+    res.redirect('/dashboard')
+  })
+}
+
+
