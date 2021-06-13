@@ -1,0 +1,55 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Add Post</li>
+  </ol>
+</nav>
+
+
+{{#if alert}}
+<div style="max-width: 1000px; margin:auto" class="alert alert-success {{#if danger}}alert-danger{{/if}} alert-dismissible fade show" role="alert">
+  {{alert}}
+  <a href="/dashboard/add/post">
+    <button href="/dashboard/add/post/" class="btn-close" aria-label="Close"></button>
+  </a>
+</div>
+{{/if}}
+
+<h2 class="pt-4 text-center">Add Post</h2>
+<form style="max-width: 1000px; margin:auto" action="/dashboard/add/post" id="floatingTextarea2" method="POST">
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="floatingInput" placeholder="First name" name="title">
+    <label for="floatingInput">Title</label>
+  </div>
+  <div class="form-floating mb-3">
+    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="content"></textarea>
+    <label for="floatingTextarea2">Content</label>
+  </div>
+  <div class="mb-3">
+    <select class="form-select" aria-label="Default select example" name="authors">
+      <option selected disabled> Choose Author...</option>
+      {{#each authors}}
+      <option value="{{this.id}}">{{this.author}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="mb-3">
+    <select class="form-select" aria-label="Default select example" name="status">
+      <option selected disabled> Choose Status...</option>
+      {{#each status}}
+      <option value="{{this.id}}">{{this.status}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="mb-3">
+    <select class="form-select" aria-label="Default select example" name="category">
+      <option selected disabled> Choose Category...</option>
+      {{#each category}}
+      <option value="{{this.id}}">{{this.category}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="d-grid gap-2 pt-3">
+  <button class="btn btn-primary" type="submit">Submit</button>
+</div>
+</form>
