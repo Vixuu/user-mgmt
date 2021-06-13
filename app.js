@@ -23,4 +23,4 @@ const routes = require('./routes/router')
 app.use('/', routes)
 
 
-app.listen(3030, () => console.log("Server started"))
+app.listen(3030, () => console.log("Server started on 3030"))
