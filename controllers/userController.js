@@ -20,7 +20,7 @@ exports.viewUsers = (req, res) => {
   db.query('SELECT * FROM users WHERE status = "active" ', (err, users) => {
     if (!err) {
       const { alert } = req.query
-      res.render('users', { users, alert })
+      res.render('./grade-system/users', { users, alert })
     } else {
       console.log(err)
     }
@@ -29,7 +29,7 @@ exports.viewUsers = (req, res) => {
 
 // Form render
 exports.addUserForm = (req, res) => {
-  res.render('addUser')
+  res.render('./grade-system/addUser')
 }
 
 //Add user
@@ -37,7 +37,7 @@ exports.addUser = (req, res) => {
   const { first_name, last_name, email, comment } = req.body
 
   if (!first_name || !last_name || !email) {
-    res.render('addUser', { alert: "You provided incorrent information!", danger: true })
+    res.render('./grade-system/addUser', { alert: "You provided incorrent information!", danger: true })
     return
   }
 
@@ -46,7 +46,7 @@ exports.addUser = (req, res) => {
     [first_name, last_name, email, comment],
     (err) => {
       if (!err) {
-        res.render('adduser', { alert: "User successfully added!" })
+        res.render('./grade-system/adduser', { alert: "User successfully added!" })
       } else {
         console.log(err)
       }
@@ -65,13 +65,13 @@ exports.deleteUser = (req, res) => {
 
 //Edit user
 exports.editUser = (req, res) => {
-  res.render('editUser')
+  res.render('./grade-system/editUser')
 }
 
 exports.viewUser = (req, res) => {
   db.query('SELECT * from users WHERE id = ?', [req.params.id], (err, user) => {
     db.query('SELECT * FROM  grades, lecturers, subjects WHERE grades.lecturer = lecturers.id AND grades.subject = subjects.id AND user = ?', [req.params.id], (err, result) => {
-      res.render('viewUser', { user, result })
+      res.render('./grade-system/viewUser', { user, result })
       console.log()
     })
   })

@@ -3,6 +3,7 @@ const router = express.Router()
 const user = require('../controllers/userController')
 const lecturer = require('../controllers/lecturerController')
 const grade = require('../controllers/gradeController')
+const dashboard = require('../controllers/dashboardController')
 
 
 //USERS / STUDENTS 
@@ -47,6 +48,10 @@ router.post('/grade/add', grade.addGrade)
 
 //Delete grade 
 router.get('/grade/delete/:id', grade.deleteGrade)
+
+
+//Admin Dashboard 
+router.get('/dashboard', dashboard.viewDash)
 
 
 module.exports = router

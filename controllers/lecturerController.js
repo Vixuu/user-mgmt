@@ -24,7 +24,7 @@ exports.viewSpec = (req, res) => {
 exports.viewLecturers = (req, res) => {
    db.query('SELECT * FROM lecturers WHERE status = "active"', (err, lecturers) => {
     if (!err) {
-      res.render('lecturers', { lecturers })
+      res.render('./grade-system/lecturers', { lecturers })
     } else {
       console.log(err)
     }
@@ -34,7 +34,7 @@ exports.viewLecturers = (req, res) => {
 exports.addForm = (req, res) => {
   db.query('SELECT * FROM spec', (err, spec) => {
     if (!err) {
-      res.render('addLecturer', { spec })
+      res.render('./grade-system/addLecturer', { spec })
     }
   })
 }
@@ -45,7 +45,7 @@ exports.addLecturer = (req, res) => {
   if (!first_name || !last_name || !email || !spec || spec === "Specialization") {
     db.query('SELECT * FROM spec', (err, spec) => {
       if (!err) {
-        res.render('addLecturer', { alert: "You provided incorrect information!", danger: true, spec })
+        res.render('./grade-system/addLecturer', { alert: "You provided incorrect information!", danger: true, spec })
       }
     })
     return
@@ -56,7 +56,7 @@ exports.addLecturer = (req, res) => {
     [first_name, last_name, email, spec],
     (err) => {
       if (!err) {
-        res.render('addLecturer', { alert: "Lecturer successfully added!" })
+        res.render('./grade-system/addLecturer', { alert: "Lecturer successfully added!" })
       } else {
         console.log(err)
       }

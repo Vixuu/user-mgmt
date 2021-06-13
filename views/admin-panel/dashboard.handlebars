@@ -1,0 +1,37 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Status</th>
+      <th scope="col">Author</th>
+      <th scope="col">Title</th>
+      <th scope="col">Content</th>
+      <th scope="col">Category</th>
+      <th class="text-end" scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each result}}
+    <tr>
+      <td {{#if this.idStatus}} style="color: green;" {{else}} style="color: red;"{{/if}}>{{this.status}}</td>
+      <td>{{this.author}}</td>
+      <td>{{this.Title}}</td>
+      <td style="width: 50%;">{{this.Content}}</td>
+      <td>{{this.category}}</td>
+      <td class="text-end">
+        <a href="" type="button" 
+        class="btn {{#if this.idStatus}}btn-secondary{{else}}btn-success{{/if}} btn-small">
+          {{#if this.idStatus}}
+            To DRAFT
+          {{else}}
+            PUBLISH
+          {{/if}}
+        </a>
+        <a href="" type="button" class="btn btn-primary btn-small">Edit</a>
+        <a href="" type="button" class="btn btn-danger btn-small">Delete</a>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+ 

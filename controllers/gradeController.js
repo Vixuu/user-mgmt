@@ -20,7 +20,7 @@ exports.addForm = (req, res) => {
     db.query('SELECT * from lecturers', (err, lecturers) => {
       db.query('SELECT * from subjects', (err, subjects) => {
         const { alert } = req.query
-        res.render('addGrade', { user, lecturers, subjects, alert })
+        res.render('./grade-system/addGrade', { user, lecturers, subjects, alert })
         console.log(user)
       })
     })
